@@ -26,6 +26,44 @@
 
         console.log(jobPerson.billCharge(1000));
 
+        const studentInfo = {
+            Nmae: "Masud Rana",
+            CurrentLocation:"Parulia Satkhira",
+            Salary:3000,
+            monthlyBill:function(bill){
+                Salary=this.Salary-bill;
+                console.log("Name = "+ this.Nmae+" Location = "+this.CurrentLocation + " Salary = "+ Salary);
+
+            }
+        }
+        //specially for bind
+        const bindInfo = {
+            Nmae: "Masud Rana",
+            CurrentLocation:"Parulia Satkhira",
+            Salary:3000,
+            monthlyBill:function(bill,charge){
+               this.Salary=this.Salary-bill -charge;
+                console.log("Name = "+ this.Nmae+" Location = "+this.CurrentLocation + " Salary = "+ this.Salary);
+
+            }
+        }
+        const jobHolder = {
+            Nmae: "Masud Saheb",
+            CurrentLocation:"Parulia Satkhira",
+            Salary:13000,
+        }
+
+        const binding = studentInfo.monthlyBill.bind(jobHolder,1000);
+        binding();
+        studentInfo.monthlyBill.call(jobHolder,2000);
+        console.log(jobHolder.Salary);
+        bindInfo.monthlyBill.apply(jobHolder,[9200,1100]);//apply can take array arguments
+        console.log(bindInfo.Salary);
+        console.log(jobHolder.Salary);
+        console.log(jobHolder);
+        console.log(studentInfo.Salary);
+
+
     
     </script>
 </body>
